@@ -21,7 +21,7 @@ const App = () =>
         </p>
         <ul className="list-[circle] mb-4">
             <li>
-                <a className="border-b-2 border-slate-50 border-dotted" href="">Star this repo</a>
+                <a className="border-b-2 border-slate-50 border-dotted" href="https://github.com/gerardmarquinarubio/bun-react-app">Star this repo</a>
             </li>
             <li>
                 Edit index.tsx
