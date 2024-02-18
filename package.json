@@ -1,0 +1,24 @@
+{
+  "name": "bun-react-app",
+  "type": "module",
+  "devDependencies": {
+    "@types/bun": "latest",
+    "@types/react": "latest",
+    "@types/react-dom": "latest"
+  },
+  "peerDependencies": {
+    "typescript": "latest"
+  },
+  "dependencies": {
+    "react": "latest",
+    "react-dom": "latest",
+    "tailwind": "latest"
+  },
+  "scripts": {
+    "dev": "bun ./scripts/build.ts --dev",
+    "build": "bun ./scripts/build.ts"
+  },
+  "engines": {
+    "bun": ">=1.0.27"
+  }
+}
