@@ -1,5 +1,5 @@
 {
-  "name": "bun-react-app",
+  "name": "create-bun-react-app",
   "type": "module",
   "devDependencies": {
     "@types/bun": "latest",
@@ -15,8 +15,10 @@
     "tailwind": "latest"
   },
   "scripts": {
-    "dev": "bun ./scripts/build.ts --dev",
-    "build": "bun ./scripts/build.ts"
+    "dev": "bun ./scripts/helper.ts -w -s",
+    "bundle": "NODE_ENV=production bun ./scripts/helper.ts",
+    "start": "bun ./scripts/helper.ts -s",
+    "lint": "echo 'Add your lint command by editing the package.json file' && exit 1"
   },
   "engines": {
     "bun": ">=1.0.27"
