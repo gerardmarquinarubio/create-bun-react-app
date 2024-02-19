@@ -15,8 +15,8 @@
     "tailwind": "latest"
   },
   "scripts": {
-    "dev": "bun ./scripts/helper.ts -w -s",
-    "bundle": "NODE_ENV=production bun ./scripts/helper.ts",
+    "dev": "bun ./scripts/helper.ts -b -w -s",
+    "bundle": "NODE_ENV=production bun ./scripts/helper.ts -b",
     "start": "bun ./scripts/helper.ts -s",
     "lint": "echo 'Add your lint command by editing the package.json file' && exit 1"
   },

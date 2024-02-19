@@ -1,4 +1,4 @@
-import {
+import Bun, {
     $,
     write,
     build,
@@ -9,29 +9,30 @@ import { parseArgs } from 'util';
 import { watch } from 'fs';
 
 const { values: {
-    mode = process.env.NODE_ENV,
     port = '1714',
     outdir = 'dist',
     srcdir = 'src',
     entrypoints = 'index.tsx',
     serve: serveOption = false,
     watch: watchOption = false,
+    bundle: bundleOption = false,
 }} = parseArgs({
     args: Bun.argv,
     options: {
-        mode: { type: 'string' },
         port: { type: 'string', short: 'p' },
         outdir: { type: 'string', short: 'o' },
         srcdir: { type: 'string', short: 'i' },
         entrypoints: { type: 'string' },
         serve: { type: 'boolean', short: 's' },
         watch: { type: 'boolean', short: 'w' },
+        bundle: { type: 'boolean', short: 'b' },
     },
     strict: true,
     allowPositionals: true,
 });
 
 async function bundle() {
+    if (!bundleOption) return;
     await Promise.all([
         $`bunx tailwindcss -i ${srcdir}/index.css -o ${outdir}/index.css`,
         write(`${outdir}/index.html`, 
@@ -60,10 +61,10 @@ async function bundle() {
             outdir,
             format: 'esm',
             target: 'browser',
-            minify: mode === 'production',
+            minify: Bun.env.NODE_ENV === 'production',
             splitting: true,
-            sourcemap: mode === 'development' ? 'inline' : 'none',
-            define: { 'process.env.NODE_ENV': `"${mode}"` },
+            sourcemap: Bun.env.NODE_ENV === 'development' ? 'inline' : 'none',
+            define: { 'process.env.NODE_ENV': `"${Bun.env.NODE_ENV}"` },
         }),
     ]);
 }
