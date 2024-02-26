@@ -19,6 +19,10 @@ cd myapp
 bun dev
 ```
 
+## Template screenshot
+
+<img src="https://i.ibb.co/RD2yhYj/create-bun-react-app.png" />
+
 ## Features
 
 | **Feature**         | **Description**                       |
